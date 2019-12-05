@@ -1,7 +1,25 @@
 #!/usr/bin/env python3
 
+def findGroups(digits):
+    cn = digits[0]
+    groups = {}
+    for d in digits[1:]:
+        if d == cn:
+            if d not in groups:
+                groups[d] = 2
+            else:
+                groups[d] += 1
+    for group in groups:
+        if groups[group] % 2 == 0:
+            del(groups[group])
+    return groups
+
 def testPW(pw):
     digits = [int(x) for x in str(pw)]
+    grps = findGroups(digits)
+    if len(grps) > 0:
+        print(grps)
+        return False
     double = False
     inc = True
     cn = digits[0]
@@ -17,6 +35,9 @@ def main():
     assert testPW(111111) == True
     assert testPW(223450) == False
     assert testPW(123789) == False
+    assert testPW(112233) == True
+    assert testPW(123444) == False
+    assert testPW(111122) == True
 
     start = 193651
     end = 649729 + 1
