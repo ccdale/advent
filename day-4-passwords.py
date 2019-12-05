@@ -22,7 +22,7 @@ def testPW(pw):
     digits = [int(x) for x in str(pw)]
     grps = findGroups(digits)
     if len(grps) > 0:
-        print(grps)
+        # print(grps)
         return False
     double = False
     inc = True
@@ -45,12 +45,12 @@ def main():
     assert testPW(112221) == False
     assert testPW(112222) == True
 
-    # start = 193651
-    # end = 649729 + 1
-    # xcn = 0
-    # for dd in range(start, end):
-    #     xcn += 1 if testPW(dd) else 0
-    # print("{} passwords match".format(xcn))
+    start = 193651
+    end = 649729 + 1
+    xcn = 0
+    for dd in range(start, end):
+        xcn += 1 if testPW(dd) else 0
+    print("{} passwords match".format(xcn))
 
 if __name__ == "__main__":
     main()
