@@ -10,6 +10,7 @@ def findGroups(digits):
                 groups[d] = 2
             else:
                 groups[d] += 1
+        cn = d
     for group in groups:
         if groups[group] % 2 == 0:
             delete.append(group)
