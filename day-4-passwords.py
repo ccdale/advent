@@ -18,13 +18,11 @@ def findGroups(digits):
             delete.append(group)
     for d in delete:
         del(groups[d])
-    return groups
+    return True if len(groups) > 0 else False
 
 def testPW(pw):
     digits = [int(x) for x in str(pw)]
-    grps = findGroups(digits)
-    if len(grps) > 0:
-        print(pw, grps)
+    if findGroups(digits):
         return False
     double = False
     inc = True
