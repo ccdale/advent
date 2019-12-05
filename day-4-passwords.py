@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import sys
+
 def findGroups(digits):
     cn = digits[0]
     groups = {}
