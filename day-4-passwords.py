@@ -2,27 +2,48 @@
 
 import sys
 
-def findGroups(digits):
+# def findGroups(digits):
+#     cn = digits[0]
+#     groups = {}
+#     delete = []
+#     for d in digits[1:]:
+#         if d == cn:
+#             if d not in groups:
+#                 groups[d] = 2
+#             else:
+#                 groups[d] += 1
+#         cn = d
+#     for group in groups:
+#         if groups[group] % 2 == 0:
+#             delete.append(group)
+#     for d in delete:
+#         del(groups[d])
+#     return True if len(groups) > 0 else False
+
+def occurences(digits):
     cn = digits[0]
     groups = {}
-    delete = []
     for d in digits[1:]:
         if d == cn:
             if d not in groups:
                 groups[d] = 2
             else:
                 groups[d] += 1
+        else:
+            groups[d] = 1
         cn = d
+    # print(digits,groups)
     for group in groups:
-        if groups[group] % 2 == 0:
-            delete.append(group)
-    for d in delete:
-        del(groups[d])
-    return True if len(groups) > 0 else False
+        if groups[group] == 2:
+            # print(True)
+            return True
+    return False
 
 def testPW(pw):
     digits = [int(x) for x in str(pw)]
-    if findGroups(digits):
+    # if findGroups(digits):
+    #     return False
+    if not occurences(digits):
         return False
     double = False
     inc = True
@@ -37,7 +58,7 @@ def testPW(pw):
     return double & inc
 
 def main():
-    assert testPW(111111) == True
+    # assert testPW(111111) == True
     assert testPW(223450) == False
     assert testPW(123789) == False
     assert testPW(112233) == True
@@ -46,6 +67,7 @@ def main():
     assert testPW(112221) == False
     assert testPW(112222) == True
 
+    # sys.exit(0)
     start = 193651
     end = 649729 + 1
     xcn = 0
