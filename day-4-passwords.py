@@ -4,11 +4,11 @@ def testPW(pw):
     digits = [int(x) for x in str(pw)]
     double = False
     inc = True
-    cn = -1
-    for d in digits:
+    cn = digits[0]
+    for d in digits[1:]:
         if d == cn:
             double = True
-        if cn < d:
+        if d < cn:
             inc = False
         cn = d
     return double & inc
@@ -20,10 +20,10 @@ def main():
 
     start = 193651
     end = 649729 + 1
-    cn = 0
+    xcn = 0
     for dd in range(start, end):
-        cn += 1 if testPW(dd) else 0
-    print("{} passwords match")
+        xcn += 1 if testPW(dd) else 0
+    print("{} passwords match".format(xcn))
 
 if __name__ == "__main__":
     main()
