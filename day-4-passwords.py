@@ -3,6 +3,7 @@
 def findGroups(digits):
     cn = digits[0]
     groups = {}
+    delete = []
     for d in digits[1:]:
         if d == cn:
             if d not in groups:
@@ -11,7 +12,9 @@ def findGroups(digits):
                 groups[d] += 1
     for group in groups:
         if groups[group] % 2 == 0:
-            del(groups[group])
+            delete.append(group)
+    for d in delete:
+        del(groups[d])
     return groups
 
 def testPW(pw):
