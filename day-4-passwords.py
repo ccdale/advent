@@ -3,13 +3,13 @@
 def testPW(pw):
     digits = [int(x) for x in str(pw)]
     double = False
-    inc = False
+    inc = True
     cn = -1
     for d in digits:
         if d == cn:
             double = True
-        if d >= cn:
-            inc = True
+        if cn < d:
+            inc = False
         cn = d
     return double & inc
 
