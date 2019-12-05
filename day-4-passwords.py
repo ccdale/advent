@@ -24,7 +24,7 @@ def testPW(pw):
     digits = [int(x) for x in str(pw)]
     grps = findGroups(digits)
     if len(grps) > 0:
-        # print(grps)
+        print(pw, grps)
         return False
     double = False
     inc = True
@@ -34,6 +34,7 @@ def testPW(pw):
             double = True
         if d < cn:
             inc = False
+            break
         cn = d
     return double & inc
 
